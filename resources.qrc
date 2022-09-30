@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Resources/Fonts/Roboto-Light.ttf</file>
+        <file>Resources/Fonts/Roboto-Medium.ttf</file>
+        <file>Resources/Fonts/Roboto-Regular.ttf</file>
+        <file>Resources/Images/Homer-Simpson-Looking-Happy 1.png</file>
+        <file>Resources/Images/image 1.png</file>
+        <file>Resources/Images/image 2.png</file>
+        <file>Resources/Images/image 5.png</file>
+        <file>Resources/Images/image 6.png</file>
+        <file>Resources/Images/image 7.png</file>
+        <file>Resources/Images/image 8.png</file>
+        <file>Resources/Images/image 9.png</file>
+        <file>Resources/Images/png-clipart-homer-simpson-bart-simpson-marge-simpson-lisa-simpson-maggie-simpson-bart-simpson-vertebrate-smiley 1.png</file>
+    </qresource>
+</RCC>
