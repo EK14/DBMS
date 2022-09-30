@@ -21,7 +21,6 @@ void ADDVARIANT::on_pushButton_clicked()
 {
     QString variantName = ui->lineEdit->text();
     this->dbms->addVariant(index, variantName, this);
-    on_pushButton_2_clicked();
 }
 
 

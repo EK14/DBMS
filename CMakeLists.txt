@@ -58,6 +58,7 @@ else()
     else()
         add_executable(DataBaseLab1
             ${PROJECT_SOURCES}
+            ${CPP_SOURCES}
         )
     endif()
 endif()

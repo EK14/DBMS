@@ -96,11 +96,10 @@ void DBMS::printTable(int index) {
 }
 
 void DBMS::addStudent(int index, QString name, QWidget *parent){
-    std::ifstream f("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/students.txt");
-    int lastID = checkString(f, name);
-    f.close();
+    std::string filename = "students.txt";
+    int lastID = checkString(index, name, &filename);
     std::ofstream f1;
-    f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/students.txt");
+    f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/students.txt", std::ios::app);
     if(lastID < 0){
         QMessageBox::critical(parent, "Заголовок", "This student is already listed in the table\n");
     }
@@ -108,33 +107,43 @@ void DBMS::addStudent(int index, QString name, QWidget *parent){
         f1 << (lastID + 1);
         f1 << name.toStdString() + "\n";
     }
+    f1.close();
 }
 
-int DBMS::checkString(std::ifstream& file, QString& str) {
+int DBMS::checkString(int index, QString& str, std::string* s) {
+    std::string filename = *s;
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + filename);
     std::string information;
     std::string name = "";
     int lastId;
     str = " " + str;
     for(std::string id; file >> id;){
-        for(int j = 0; j < 3; j++){
+        if(*s == "students.txt"){
+            for(int j = 0; j < 3; j++){
+                file >> information;
+                name += " " + information;
+            }
+        }
+        else{
             file >> information;
             name += " " + information;
         }
         if(QString::fromStdString(name) == str){
+            file.close();
             return -1;
         }
         lastId = stoi(id);
         name = "";
     }
+    file.close();
     return lastId;
 }
 
 void DBMS::addVariant(int index, QString name, QWidget *parent){
-    std::ifstream f("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/variants.txt");
-    int lastID = checkString(f, name);
-    f.close();
+    std::string filename = "variants.txt";
+    int lastID = checkString(index, name, &filename);
     std::ofstream f1;
-    f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/variants.txt");
+    f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/variants.txt", std::ios::app);
     if(lastID < 0){
         QMessageBox::critical(parent, "Заголовок", "This variant is already listed in the table\n");
     }
@@ -142,4 +151,5 @@ void DBMS::addVariant(int index, QString name, QWidget *parent){
         f1 << (lastID + 1);
         f1 << name.toStdString() + "\n";
     }
+    f1.close();
 }

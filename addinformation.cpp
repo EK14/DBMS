@@ -19,7 +19,7 @@ AddInformation::~AddInformation()
 void AddInformation::on_pushButton_clicked()
 {
     name = ui->lineEdit->text();
-    int index = this->dbms->databaseExist(name.toStdString());
+    this->index = this->dbms->databaseExist(name.toStdString());
     if (index >= 0){
         this->dbms->populateDatabase(index);
     }else{

@@ -27,7 +27,7 @@ private:
     void generateID(int index);
     void testingTable(int index);
     void copyInitData(int index);
-    int checkString(std::ifstream& file, QString& str);
+    int checkString(int index, QString& str, std::string* s);
     void transferInformation();
 };
 

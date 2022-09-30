@@ -21,7 +21,6 @@ void ADDSTUDENT::on_pushButton_clicked()
 {
     QString studentName = ui->lineEdit->text();
     this->dbms->addStudent(index, studentName, this);
-    on_pushButton_2_clicked();
 }
 
 void ADDSTUDENT::on_pushButton_2_clicked()
