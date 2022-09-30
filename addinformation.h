@@ -3,8 +3,7 @@
 
 #include <QDialog>
 #include "dbms.h"
-#include "addstudent.h"
-#include "addvariant.h"
+#include "add.h"
 #include <QMessageBox>
 
 namespace Ui {
@@ -33,8 +32,7 @@ private:
     DBMS *dbms;
     QWidget *parent;
     QString name;
-    ADDSTUDENT *windowAddStudent;
-    ADDVARIANT *windowAddVariant;
+    ADD *window;
     int index;
 };
 

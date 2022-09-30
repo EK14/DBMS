@@ -1,7 +1,7 @@
 # This file is used to ignore files which are generated
 # ----------------------------------------------------------------------------
 
-build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug
+build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/
 
 *~
 *.autosave

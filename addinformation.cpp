@@ -36,8 +36,9 @@ void AddInformation::on_pushButton_2_clicked()
            QMessageBox::critical(this,"Заголовок", "There is no database with this name");
     else{
         hide();
-        windowAddStudent = new ADDSTUDENT(parent, dbms, name, index);
-        windowAddStudent->show();
+        std::string type = "student";
+        window = new ADD(parent, dbms, name, index, type);
+        window->show();
     }
 }
 
@@ -57,8 +58,9 @@ void AddInformation::on_pushButton_3_clicked()
            QMessageBox::critical(this,"Заголовок", "There is no database with this name");
     else{
         hide();
-        windowAddVariant = new ADDVARIANT(parent, dbms, name, index);
-        windowAddVariant->show();
+        std::string type = "variant";
+        window = new ADD(parent, dbms, name, index, type);
+        window->show();
     }
 }
 

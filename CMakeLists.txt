@@ -31,12 +31,9 @@ set(PROJECT_SOURCES
         addinformation.cpp
         addinformation.h
         addinformation.ui
-        addstudent.cpp
-        addstudent.h
-        addstudent.ui
-        addvariant.cpp
-        addvariant.h
-        addvariant.ui
+        add.cpp
+        add.h
+        add.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

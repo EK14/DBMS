@@ -16,27 +16,29 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>60</x>
      <y>10</y>
-     <width>231</width>
-     <height>51</height>
+     <width>271</width>
+     <height>61</height>
     </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="styleSheet">
     <string notr="true">color: white;</string>
    </property>
    <property name="text">
-    <string>Okay, you don’t like my table, right?
-I don’t care, do whatever you want!</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;Okay, you don’t like my table, right?&lt;br/&gt;I don’t care, do whatever you want!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
      <x>80</x>
-     <y>190</y>
-     <width>251</width>
-     <height>191</height>
+     <y>240</y>
+     <width>241</width>
+     <height>151</height>
     </rect>
    </property>
    <property name="text">
@@ -50,7 +52,7 @@ I don’t care, do whatever you want!</string>
    <property name="geometry">
     <rect>
      <x>330</x>
-     <y>350</y>
+     <y>360</y>
      <width>61</width>
      <height>32</height>
     </rect>
@@ -62,28 +64,28 @@ I don’t care, do whatever you want!</string>
     <string>Home</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>60</y>
-     <width>305</width>
+     <x>50</x>
+     <y>70</y>
+     <width>301</width>
      <height>35</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout_2">
     <item>
-     <widget class="QLabel" name="label_2">
-      <property name="styleSheet">
-       <string notr="true">color: white;</string>
-      </property>
-      <property name="text">
-       <string>DataBase name:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
      <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">color: white;</string>
+        </property>
+        <property name="text">
+         <string>DataBase name:</string>
+        </property>
+       </widget>
+      </item>
       <item>
        <widget class="QLineEdit" name="lineEdit">
         <property name="enabled">
@@ -108,13 +110,13 @@ I don’t care, do whatever you want!</string>
     </item>
    </layout>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>80</x>
-     <y>100</y>
-     <width>241</width>
-     <height>76</height>
+     <x>50</x>
+     <y>110</y>
+     <width>301</width>
+     <height>118</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -137,6 +139,30 @@ I don’t care, do whatever you want!</string>
         </property>
         <property name="text">
          <string>Add a variant</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QPushButton" name="pushButton_7">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;</string>
+        </property>
+        <property name="text">
+         <string>Delete a student</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="styleSheet">
+         <string notr="true">background-color: white;</string>
+        </property>
+        <property name="text">
+         <string>Delete a variant</string>
         </property>
        </widget>
       </item>

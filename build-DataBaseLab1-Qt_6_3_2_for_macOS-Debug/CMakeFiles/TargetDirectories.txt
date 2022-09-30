@@ -1,9 +1,0 @@
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/DataBaseLab1.dir
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/edit_cache.dir
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/rebuild_cache.dir
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/list_install_components.dir
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/install.dir
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/install/local.dir
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/install/strip.dir
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/DataBaseLab1_autogen_timestamp_deps.dir
-/Users/elinakarapetan/Desktop/DataBaseLab1/build-DataBaseLab1-Qt_6_3_2_for_macOS-Debug/CMakeFiles/DataBaseLab1_autogen.dir
