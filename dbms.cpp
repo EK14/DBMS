@@ -97,7 +97,7 @@ void DBMS::printTable(int index) {
 
 void DBMS::addStudent(int index, QString name, QWidget *parent){
     std::string filename = "students.txt";
-    int lastID = checkString(index, name, &filename);
+    int lastID = checkString(index, name, &filename, "Add");
     std::ofstream f1;
     f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/students.txt", std::ios::app);
     if(lastID < 0){
@@ -110,14 +110,16 @@ void DBMS::addStudent(int index, QString name, QWidget *parent){
     f1.close();
 }
 
-int DBMS::checkString(int index, QString& str, std::string* s) {
+int DBMS::checkString(int index, QString& str, std::string* s, std::string type) {
     std::string filename = *s;
     std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + filename);
     std::string information;
     std::string name = "";
     int lastId;
+    int count = 0;
     str = " " + str;
     for(std::string id; file >> id;){
+        count++;
         if(*s == "students.txt"){
             for(int j = 0; j < 3; j++){
                 file >> information;
@@ -130,18 +132,24 @@ int DBMS::checkString(int index, QString& str, std::string* s) {
         }
         if(QString::fromStdString(name) == str){
             file.close();
-            return -1;
+            if(type == "Add")
+                return -1;
+            else if(type == "Remove")
+                return count;
         }
         lastId = stoi(id);
         name = "";
     }
     file.close();
-    return lastId;
+    if(type == "Add")
+        return lastId;
+    else if(type == "Remove")
+        return -1;
 }
 
 void DBMS::addVariant(int index, QString name, QWidget *parent){
     std::string filename = "variants.txt";
-    int lastID = checkString(index, name, &filename);
+    int lastID = checkString(index, name, &filename, "Add");
     std::ofstream f1;
     f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/variants.txt", std::ios::app);
     if(lastID < 0){
@@ -152,4 +160,34 @@ void DBMS::addVariant(int index, QString name, QWidget *parent){
         f1 << name.toStdString() + "\n";
     }
     f1.close();
+}
+
+void DBMS::remove(int index, QString name, QWidget *parent, std::string s){
+    std::string filename = s;
+    int lineToRemove = checkString(index, name, &filename, "Remove");
+    if(lineToRemove == -1){
+        QMessageBox::critical(parent, "Заголовок", "There is no student/variant with this name\n");
+        return;
+    }
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + filename);
+    std::string line;
+    std::string text;
+    int amountStr = 0;
+    while(getline(file,line))
+     {
+       amountStr++;
+
+       if(!(amountStr == lineToRemove))
+       {
+           text.insert(text.size(),line);
+           text.insert(text.size(),"\n");
+       }
+     }
+    file.close();
+    std::ofstream file_out;
+
+    file_out.open ("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + filename,std::ios::trunc | std::ios::binary);
+
+    file_out.write(text.c_str(), text.size());
+    file_out.clear();
 }

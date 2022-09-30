@@ -152,7 +152,7 @@
          <string notr="true">background-color: white;</string>
         </property>
         <property name="text">
-         <string>Delete a student</string>
+         <string>Remove a student</string>
         </property>
        </widget>
       </item>
@@ -162,7 +162,7 @@
          <string notr="true">background-color: white;</string>
         </property>
         <property name="text">
-         <string>Delete a variant</string>
+         <string>Remove a variant</string>
         </property>
        </widget>
       </item>

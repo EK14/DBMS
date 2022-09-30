@@ -36,9 +36,9 @@ void AddInformation::on_pushButton_2_clicked()
            QMessageBox::critical(this,"Заголовок", "There is no database with this name");
     else{
         hide();
-        std::string type = "student";
-        window = new ADD(parent, dbms, name, index, type);
-        window->show();
+        std::string type = "Add student";
+        windowAdd = new ADD(parent, dbms, name, index, type);
+        windowAdd->show();
     }
 }
 
@@ -58,9 +58,39 @@ void AddInformation::on_pushButton_3_clicked()
            QMessageBox::critical(this,"Заголовок", "There is no database with this name");
     else{
         hide();
-        std::string type = "variant";
-        window = new ADD(parent, dbms, name, index, type);
-        window->show();
+        std::string type = "Add variant";
+        windowAdd = new ADD(parent, dbms, name, index, type);
+        windowAdd->show();
+    }
+}
+
+
+void AddInformation::on_pushButton_7_clicked()
+{
+    if(name == "")
+        QMessageBox::critical(this,"Заголовок", "Please, enter the database name");
+    else if((this->dbms->databaseExist(name.toStdString())) < 0)
+           QMessageBox::critical(this,"Заголовок", "There is no database with this name");
+    else{
+        hide();
+        std::string type = "Remove student";
+        windowAdd = new ADD(parent, dbms, name, index, type);
+        windowAdd->show();
+    }
+}
+
+
+void AddInformation::on_pushButton_8_clicked()
+{
+    if(name == "")
+        QMessageBox::critical(this,"Заголовок", "Please, enter the database name");
+    else if((this->dbms->databaseExist(name.toStdString())) < 0)
+           QMessageBox::critical(this,"Заголовок", "There is no database with this name");
+    else{
+        hide();
+        std::string type = "Remove variant";
+        windowAdd = new ADD(parent, dbms, name, index, type);
+        windowAdd->show();
     }
 }
 
