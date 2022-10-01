@@ -22,8 +22,9 @@ public:
     void correction(QWidget *parent, int id, QString nameToCorrect, QString correctedName, std::string s, int index);
     int databaseExist(std::string database);
     void populateDatabase(int index);
-    void printTable(int index);
-    int checkUp(QWidget *parent, int index, QString nameToCorrect, std::string s);
+    int checkUp(QWidget *parent, int index, QString nameToCorrect, std::string s, std::string type);
+    void print(int id, std::string type, int index, std::string& str);
+    int checkID(QWidget *parent, int index, QString nameToCorrect, std::string filename, std::string type);
 
 private:
     void generateID(int index);

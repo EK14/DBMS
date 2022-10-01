@@ -39,3 +39,11 @@ void MainWindow::on_pushButton_3_clicked()
     windowChange->show();
 }
 
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    hide();
+    windowPrint = new PrintMenu(this, dbms);
+    windowPrint->show();
+}
+

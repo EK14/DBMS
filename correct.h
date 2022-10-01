@@ -13,7 +13,7 @@ class Correct : public QDialog
     Q_OBJECT
 
 public:
-    explicit Correct(QWidget *parent,  DBMS *dbms, int index, std::string& str);
+    explicit Correct(QWidget *parent,  DBMS *dbms, int index, std::string& file, std::string& type);
     ~Correct();
 
 private slots:
@@ -35,6 +35,7 @@ private:
     bool canBeCorrected;
     std::string type;
     int id;
+    std::string file;
 };
 
 #endif // CORRECT_H

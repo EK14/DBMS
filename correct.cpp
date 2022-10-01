@@ -1,7 +1,7 @@
 #include "correct.h"
 #include "ui_correct.h"
 
-Correct::Correct(QWidget *parent,  DBMS *dbms, int index, std::string& str):
+Correct::Correct(QWidget *parent,  DBMS *dbms, int index, std::string& file, std::string& type):
     QDialog(parent),
     ui(new Ui::Correct)
 {
@@ -12,7 +12,8 @@ Correct::Correct(QWidget *parent,  DBMS *dbms, int index, std::string& str):
     this->nameToCorrect = "";
     this->correctedName = "";
     this->canBeCorrected = false;
-    this->type = str;
+    this->type = type;
+    this->file = file;
     this->id = -1;
 }
 
@@ -24,7 +25,7 @@ Correct::~Correct()
 void Correct::on_pushButton_clicked()
 {
     QString name = ui->lineEdit->text();
-    this->id = this->dbms->checkUp(this, index, name, type);
+    this->id = this->dbms->checkUp(this, index, name, file, type);
     if(id != -1)
         this->nameToCorrect = name;
     else
@@ -40,7 +41,7 @@ void Correct::on_pushButton_2_clicked()
     }
     else if(this->nameToCorrect == "")
         QMessageBox::critical(parent, "Заголовок", "Please, enter the name you want to correct\n");
-    else if(this->dbms->checkUp(this, index, name, type) != -1)
+    else if(this->dbms->checkUp(this, index, name, file, type) != -1)
     {
         QMessageBox::critical(parent, "Заголовок", "This name is already listed in the table. Please, try another one.\n");
     }
@@ -60,7 +61,7 @@ void Correct::on_pushButton_4_clicked()
         QMessageBox::critical(parent, "Заголовок", "Please, enter the name you want to correct\n");
     else if(correctedName == "")
         QMessageBox::critical(parent, "Заголовок", "Please, enter the name you want to change to\n");
-    else if(this->dbms->checkUp(this, index, correctedName, type) != -1)
+    else if(this->dbms->checkUp(this, index, correctedName, file, type) != -1)
         QMessageBox::critical(parent, "Заголовок", "This name is already listed in the table. Please, try another one.\n");
 }
 

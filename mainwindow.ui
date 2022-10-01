@@ -96,7 +96,7 @@
      <string notr="true">background-color: white;</string>
     </property>
     <property name="text">
-     <string>Print table</string>
+     <string>Print </string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_5">
@@ -112,7 +112,7 @@
      <string notr="true">background-color: white;</string>
     </property>
     <property name="text">
-     <string>Create a back-up</string>
+     <string>Back-up</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">

@@ -62,39 +62,6 @@ void DBMS::testingTable(int index) {
     }
 }
 
-void DBMS::printTable(int index) {
-    std::string name;
-    std::string surname;
-    std::string patronymic;
-    std::string variant;
-    std::ifstream f1("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/testingTable.txt");
-    std::ifstream f2("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/variants.txt");
-    std::ifstream f3("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/students.txt");
-    for(std::string word; f1 >> word;){
-        f3.clear();
-        f3.seekg(0, std::ios::beg);
-        f2.clear();
-        f2.seekg(0, std::ios::beg);
-        for(std::string student; f3 >> student;){
-            f3 >> surname;
-            f3 >> name;
-            f3 >> patronymic;
-            if(word == student){
-                std::cout << name << " " << surname << " " << patronymic << " ";
-                break;
-            }
-        }
-        f1 >> word;
-        for(std::string id; f2 >> id;){
-            f2 >> variant;
-            if(word == id){
-                std::cout << variant << std::endl;
-                break;
-            }
-        }
-    }
-}
-
 void DBMS::addStudent(int index, QString name, QWidget *parent){
     std::string filename = "students.txt";
     int lastID = checkString(index, name, &filename, "Add");
@@ -136,7 +103,7 @@ int DBMS::checkString(int index, QString& str, std::string* s, std::string type)
                 return -1;
             else if(type == "Remove")
                 return count;
-            else if(type == "Correct")
+            else if(type == "Correct" || type == "Print student" || type == "Print variant")
                 return stoi(id);
         }
         lastId = stoi(id);
@@ -145,7 +112,7 @@ int DBMS::checkString(int index, QString& str, std::string* s, std::string type)
     file.close();
     if(type == "Add")
         return lastId;
-    else if(type == "Remove" || type == "Correct")
+    else if(type == "Remove" || type == "Correct" || type == "Print student" || type == "Print variant")
         return -1;
 }
 
@@ -223,6 +190,30 @@ void DBMS::correction(QWidget *parent, int id, QString nameToCorrect, QString co
     file_out.close();
 }
 
-int DBMS::checkUp(QWidget *parent, int index, QString nameToCorrect, std::string s){
-    return checkString(index, nameToCorrect, &s, "Correct");
+int DBMS::checkUp(QWidget *parent, int index, QString nameToCorrect, std::string file, std::string type){
+    return checkString(index, nameToCorrect, &file, type);
+}
+
+
+void DBMS::print(int id, std::string type, int index, std::string& str){
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + type);
+    std::string line;
+    while(getline(file, line))
+     {
+       std::string name = line;
+       std::string id_from_line = line.erase(line.find_first_of(' ',0), line.size()-1);
+       name.erase(name.cbegin(), name.cbegin() + name.find_first_of(' ', 0) + 1);
+       if(id_from_line == std::to_string(id)){
+           str = name;
+       }
+    }
+}
+
+int DBMS::checkID(QWidget *parent, int index, QString ID, std::string filename, std::string type){
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + this->databases[index] + "/" + filename);
+    for(std::string id; file >> id;){
+        if(ID.toStdString() == id)
+            return stoi(id);
+    }
+    return -1;
 }

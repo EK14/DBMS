@@ -1,14 +1,14 @@
 #include "addinformation.h"
 #include "ui_addinformation.h"
 
-AddInformation::AddInformation(QWidget *parent, DBMS *dbms) :
+AddInformation::AddInformation(QWidget *parent, DBMS *dbms):
     QDialog(parent),
     ui(new Ui::AddInformation)
 {
     ui->setupUi(this);
     this->dbms = dbms;
     this->parent = parent;
-    name = "";
+    this->name = "";
     this->index = -1;
 }
 
@@ -101,8 +101,9 @@ void AddInformation::on_pushButton_4_clicked()
            QMessageBox::critical(this,"Заголовок", "There is no database with this name");
     else{
         hide();
-        std::string type = "students.txt";
-        windowCorrection = new Correct(parent, dbms, index, type);
+        std::string file = "students.txt";
+        std::string type = "Correct";
+        windowCorrection = new Correct(parent, dbms, index, file, type);
         windowCorrection->show();
     }
 }
@@ -115,8 +116,9 @@ void AddInformation::on_pushButton_5_clicked()
            QMessageBox::critical(this,"Заголовок", "There is no database with this name");
     else{
         hide();
-        std::string type = "variants.txt";
-        windowCorrection = new Correct(parent, dbms, index, type);
+        std::string file = "variants.txt";
+        std::string type = "Correct";
+        windowCorrection = new Correct(parent, dbms, index, file, type);
         windowCorrection->show();
     }
 }
