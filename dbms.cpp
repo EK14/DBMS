@@ -136,6 +136,8 @@ int DBMS::checkString(int index, QString& str, std::string* s, std::string type)
                 return -1;
             else if(type == "Remove")
                 return count;
+            else if(type == "Correct")
+                return stoi(id);
         }
         lastId = stoi(id);
         name = "";
@@ -143,7 +145,7 @@ int DBMS::checkString(int index, QString& str, std::string* s, std::string type)
     file.close();
     if(type == "Add")
         return lastId;
-    else if(type == "Remove")
+    else if(type == "Remove" || type == "Correct")
         return -1;
 }
 
@@ -190,4 +192,37 @@ void DBMS::remove(int index, QString name, QWidget *parent, std::string s){
 
     file_out.write(text.c_str(), text.size());
     file_out.clear();
+    file_out.close();
+}
+
+void DBMS::correction(QWidget *parent, int id, QString nameToCorrect, QString correctedName, std::string s, int index){
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + s);
+    std::string line;
+    std::string text = "";
+    int amountStr = 0;
+    while(getline(file,line))
+     {
+       std::string name = line;
+       std::string id_from_line = line.erase(line.find_first_of(' ',0), line.size()-1);
+       if(id_from_line == std::to_string(id)){
+           text.insert(text.size(),id_from_line + " " + correctedName.toStdString());
+           text.insert(text.size(),"\n");
+       }
+       else{
+           text.insert(text.size(),name);
+           text.insert(text.size(),"\n");
+       }
+     }
+    file.close();
+    std::ofstream file_out;
+
+    file_out.open ("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + s,std::ios::trunc | std::ios::binary);
+
+    file_out.write(text.c_str(), text.size());
+    file_out.clear();
+    file_out.close();
+}
+
+int DBMS::checkUp(QWidget *parent, int index, QString nameToCorrect, std::string s){
+    return checkString(index, nameToCorrect, &s, "Correct");
 }

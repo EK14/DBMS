@@ -19,9 +19,11 @@ public:
     void addStudent(int index, QString name, QWidget *parent);
     void remove(int index, QString name, QWidget *parent, std::string s);
     void update();
+    void correction(QWidget *parent, int id, QString nameToCorrect, QString correctedName, std::string s, int index);
     int databaseExist(std::string database);
     void populateDatabase(int index);
     void printTable(int index);
+    int checkUp(QWidget *parent, int index, QString nameToCorrect, std::string s);
 
 private:
     void generateID(int index);

@@ -34,6 +34,9 @@ set(PROJECT_SOURCES
         add.cpp
         add.h
         add.ui
+        correct.cpp
+        correct.h
+        correct.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

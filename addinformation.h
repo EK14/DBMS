@@ -4,6 +4,7 @@
 #include <QDialog>
 #include "dbms.h"
 #include "add.h"
+#include "correct.h"
 #include <QMessageBox>
 
 namespace Ui {
@@ -31,12 +32,17 @@ private slots:
 
     void on_pushButton_8_clicked();
 
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_5_clicked();
+
 private:
     Ui::AddInformation *ui;
     DBMS *dbms;
     QWidget *parent;
     QString name;
     ADD *windowAdd;
+    Correct *windowCorrection;
     int index;
 };
 

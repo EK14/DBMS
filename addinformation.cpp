@@ -9,6 +9,7 @@ AddInformation::AddInformation(QWidget *parent, DBMS *dbms) :
     this->dbms = dbms;
     this->parent = parent;
     name = "";
+    this->index = -1;
 }
 
 AddInformation::~AddInformation()
@@ -20,11 +21,8 @@ void AddInformation::on_pushButton_clicked()
 {
     name = ui->lineEdit->text();
     this->index = this->dbms->databaseExist(name.toStdString());
-    if (index >= 0){
-        this->dbms->populateDatabase(index);
-    }else{
+    if (index < 0)
         QMessageBox::critical(this,"Заголовок", "There is no database with this name");
-    }
 }
 
 
@@ -91,6 +89,35 @@ void AddInformation::on_pushButton_8_clicked()
         std::string type = "Remove variant";
         windowAdd = new ADD(parent, dbms, name, index, type);
         windowAdd->show();
+    }
+}
+
+
+void AddInformation::on_pushButton_4_clicked()
+{
+    if(name == "")
+        QMessageBox::critical(this,"Заголовок", "Please, enter the database name");
+    else if((this->dbms->databaseExist(name.toStdString())) < 0)
+           QMessageBox::critical(this,"Заголовок", "There is no database with this name");
+    else{
+        hide();
+        std::string type = "students.txt";
+        windowCorrection = new Correct(parent, dbms, index, type);
+        windowCorrection->show();
+    }
+}
+
+void AddInformation::on_pushButton_5_clicked()
+{
+    if(name == "")
+        QMessageBox::critical(this,"Заголовок", "Please, enter the database name");
+    else if((this->dbms->databaseExist(name.toStdString())) < 0)
+           QMessageBox::critical(this,"Заголовок", "There is no database with this name");
+    else{
+        hide();
+        std::string type = "variants.txt";
+        windowCorrection = new Correct(parent, dbms, index, type);
+        windowCorrection->show();
     }
 }
 
