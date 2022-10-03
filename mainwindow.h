@@ -7,6 +7,7 @@
 #include "populate.h"
 #include "addinformation.h"
 #include "printmenu.h"
+#include "backup.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,6 +30,8 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_pushButton_5_clicked();
+
 private:
     Ui::MainWindow *ui;
     DBMS *dbms;
@@ -36,5 +39,6 @@ private:
     Populate *windowPopulate;
     AddInformation *windowChange;
     PrintMenu *windowPrint;
+    BackUp *windowBackup;
 };
 #endif // MAINWINDOW_H

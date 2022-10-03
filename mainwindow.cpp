@@ -47,3 +47,11 @@ void MainWindow::on_pushButton_4_clicked()
     windowPrint->show();
 }
 
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    hide();
+    windowBackup = new BackUp(this, dbms);
+    windowBackup->show();
+}
+

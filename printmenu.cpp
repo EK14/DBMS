@@ -47,7 +47,8 @@ void PrintMenu::on_pushButton_clicked()
 void PrintMenu::on_pushButton_6_clicked()
 {
     name = ui->lineEdit_3->text();
-    this->index = this->dbms->databaseExist(name.toStdString());
+    std::string newName = name.toUtf8().constData();
+    this->index = this->dbms->databaseExist(newName);
     if (index < 0)
         QMessageBox::critical(this,"Заголовок", "There is no database with this name");
 }

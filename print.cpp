@@ -16,7 +16,7 @@ Print::Print(QWidget *parent, int index, std::string type, DBMS *dbms, std::stri
     }
     else if(type == "Print students"){
         std::string line;
-        std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + this->dbms->databases[index] + "/students.txt");
+        std::ifstream file("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + this->dbms->databases[index] + "/students.txt");
         while(getline(file, line)){
             QString output = QString::fromUtf8(line.c_str());
             ui->listWidget->addItem(output);
@@ -24,7 +24,7 @@ Print::Print(QWidget *parent, int index, std::string type, DBMS *dbms, std::stri
     }
     else if(type == "Print variants"){
         std::string line;
-        std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + this->dbms->databases[index] + "/variants.txt");
+        std::ifstream file("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + this->dbms->databases[index] + "/variants.txt");
         while(getline(file, line)){
             QString output = QString::fromUtf8(line.c_str());
             ui->listWidget->addItem(output);
@@ -36,9 +36,9 @@ Print::Print(QWidget *parent, int index, std::string type, DBMS *dbms, std::stri
         std::string surname;
         std::string patronymic;
         std::string variant;
-        std::ifstream f1("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + this->dbms->databases[index] + "/testingTable.txt");
-        std::ifstream f2("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + this->dbms->databases[index] + "/variants.txt");
-        std::ifstream f3("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + this->dbms->databases[index] + "/students.txt");
+        std::ifstream f1("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + this->dbms->databases[index] + "/testingTable.txt");
+        std::ifstream f2("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + this->dbms->databases[index] + "/variants.txt");
+        std::ifstream f3("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + this->dbms->databases[index] + "/students.txt");
         for(std::string word; f1 >> word;){
             f3.clear();
             f3.seekg(0, std::ios::beg);

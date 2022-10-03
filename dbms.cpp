@@ -9,8 +9,8 @@ DBMS::DBMS() {
 void DBMS::generateID(int index) {
     int i = 0;
     std::ofstream f1;
-    f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/students.txt");
-    std::ifstream f2("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/names.txt");
+    f1.open("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/students.txt");
+    std::ifstream f2("/Users/elinakarapetan/Desktop/DataBase/DataBases/names.txt");
     for (std::string word; getline(f2, word);){ // add ID's
         word = std::to_string(i) + " " + word + '\n';
         f1 << word;
@@ -24,7 +24,7 @@ void DBMS::transferInformation() {
 
 int DBMS::databaseExist(std::string database) {
     for(int i = 0; i < databases.size(); i++){ // checking if a database with the given name exists
-        if(databases[i] == database)
+        if(QString::fromUtf8(databases[i].c_str()) == QString::fromUtf8(database.c_str()))
             return i;
     }
     return -1;
@@ -37,18 +37,18 @@ void DBMS::populateDatabase(int index) {
 }
 
 void DBMS::copyInitData(int index) {
-    fs::remove("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/names.txt");
-    fs::remove("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/variants.txt");
-    fs::copy("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/names.txt", "/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/");
-    fs::copy("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/variants.txt", "/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/");
+    fs::remove("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/names.txt");
+    fs::remove("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/variants.txt");
+    fs::copy("/Users/elinakarapetan/Desktop/DataBase/DataBases/names.txt", "/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/");
+    fs::copy("/Users/elinakarapetan/Desktop/DataBase/DataBases/variants.txt", "/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/");
 }
 
 void DBMS::testingTable(int index) {
     std::vector <std::string> variants(0);
     std::ofstream f1;
-    std::ifstream f2("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/variants.txt");
-    std::ifstream f3("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/students.txt");
-    f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/testingTable.txt");
+    std::ifstream f2("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/variants.txt");
+    std::ifstream f3("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/students.txt");
+    f1.open("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/testingTable.txt");
     for(std::string word; getline(f2, word);){
         if(word == "\n")
             break;
@@ -66,7 +66,7 @@ void DBMS::addStudent(int index, QString name, QWidget *parent){
     std::string filename = "students.txt";
     int lastID = checkString(index, name, &filename, "Add");
     std::ofstream f1;
-    f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/students.txt", std::ios::app);
+    f1.open("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/students.txt", std::ios::app);
     if(lastID < 0){
         QMessageBox::critical(parent, "Заголовок", "This student is already listed in the table\n");
     }
@@ -79,7 +79,7 @@ void DBMS::addStudent(int index, QString name, QWidget *parent){
 
 int DBMS::checkString(int index, QString& str, std::string* s, std::string type) {
     std::string filename = *s;
-    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + filename);
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/" + filename);
     std::string information;
     std::string name = "";
     int lastId;
@@ -120,7 +120,7 @@ void DBMS::addVariant(int index, QString name, QWidget *parent){
     std::string filename = "variants.txt";
     int lastID = checkString(index, name, &filename, "Add");
     std::ofstream f1;
-    f1.open("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/variants.txt", std::ios::app);
+    f1.open("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/variants.txt", std::ios::app);
     if(lastID < 0){
         QMessageBox::critical(parent, "Заголовок", "This variant is already listed in the table\n");
     }
@@ -138,7 +138,7 @@ void DBMS::remove(int index, QString name, QWidget *parent, std::string s){
         QMessageBox::critical(parent, "Заголовок", "There is no student/variant with this name\n");
         return;
     }
-    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + filename);
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/" + filename);
     std::string line;
     std::string text;
     int amountStr = 0;
@@ -155,7 +155,7 @@ void DBMS::remove(int index, QString name, QWidget *parent, std::string s){
     file.close();
     std::ofstream file_out;
 
-    file_out.open ("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + filename,std::ios::trunc | std::ios::binary);
+    file_out.open ("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/" + filename,std::ios::trunc | std::ios::binary);
 
     file_out.write(text.c_str(), text.size());
     file_out.clear();
@@ -163,7 +163,7 @@ void DBMS::remove(int index, QString name, QWidget *parent, std::string s){
 }
 
 void DBMS::correction(QWidget *parent, int id, QString nameToCorrect, QString correctedName, std::string s, int index){
-    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + s);
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/" + s);
     std::string line;
     std::string text = "";
     int amountStr = 0;
@@ -183,7 +183,7 @@ void DBMS::correction(QWidget *parent, int id, QString nameToCorrect, QString co
     file.close();
     std::ofstream file_out;
 
-    file_out.open ("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + s,std::ios::trunc | std::ios::binary);
+    file_out.open ("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/" + s,std::ios::trunc | std::ios::binary);
 
     file_out.write(text.c_str(), text.size());
     file_out.clear();
@@ -196,7 +196,7 @@ int DBMS::checkUp(QWidget *parent, int index, QString nameToCorrect, std::string
 
 
 void DBMS::print(int id, std::string type, int index, std::string& str){
-    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + databases[index] + "/" + type);
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + databases[index] + "/" + type);
     std::string line;
     while(getline(file, line))
      {
@@ -210,7 +210,7 @@ void DBMS::print(int id, std::string type, int index, std::string& str){
 }
 
 int DBMS::checkID(QWidget *parent, int index, QString ID, std::string filename, std::string type){
-    std::ifstream file("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + this->databases[index] + "/" + filename);
+    std::ifstream file("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + this->databases[index] + "/" + filename);
     for(std::string id; file >> id;){
         if(ID.toStdString() == id)
             return stoi(id);

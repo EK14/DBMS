@@ -43,6 +43,9 @@ set(PROJECT_SOURCES
         printmenu.cpp
         printmenu.h
         printmenu.ui
+        backup.cpp
+        backup.h
+        backup.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

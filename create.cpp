@@ -22,7 +22,7 @@ void Create::on_pushButton_clicked()
     QString name = ui->lineEdit->text();
     if(this->dbms->databaseExist(name.toStdString()) < 0){
             this->dbms->databases.push_back(name.toStdString()); // add database name to DBSM
-            mkdir(("/Users/elinakarapetan/Desktop/DataBaseLab1/DataBases/" + name.toStdString()).c_str(), 0777);//create an empty database
+            mkdir(("/Users/elinakarapetan/Desktop/DataBase/DataBases/" + name.toStdString()).c_str(), 0777);//create an empty database
     }
     else{
             QMessageBox::critical(this,"Заголовок", "A database with the same name already exists\n");
